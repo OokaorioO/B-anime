@@ -2,17 +2,23 @@ var bubbles = [];
 var totalBubbles = 150;
 // var backgroundColor = '#f2cc5d';
 var backgroundColor = '#39324b';
-
+var h;
 
 function windowResized() {
-    resizeCanvas(document.documentElement.scrollWidth, document.documentElement.scrollHeight);
-    //windowHeightだとスクロールされた時にp５が表示されないので、document.documentElement.scroll。。に書き換える
-    // canvasSetup();
+    resizeCanvas(document.documentElement.scrollWidth, h);
 }
 
 function setup() {
-    canvas = createCanvas(windowWidth, document.documentElement.scrollHeight);
-    //ブラウザのウィンドウサイズに合わせてcanvas作成
+    if (navigator.userAgent.match(/(Android)/i)) {
+        h = 800;
+    } else if (navigator.userAgent.match(/(iPhone)/i)) {
+        h = 800;
+    } else if (navigator.userAgent.match(/(iPad|iPodPro)/i)) {
+        h = 1365;
+    } else {
+        h = 785;
+    }
+    canvas = createCanvas(document.documentElement.scrollWidth, h);
     background(backgroundColor);
     canvas.style('z-index', '-1');//canvasを後ろに移動する。
     canvas.position(0, 0);
