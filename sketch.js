@@ -1,26 +1,25 @@
 var bubbles = [];
 var totalBubbles = 150;
-// var backgroundColor = '#f2cc5d';
 var backgroundColor = '#39324b';
 var h;
 
 function windowResized() {
-    resizeCanvas(document.documentElement.scrollWidth, h);
+    resizeCanvas(windowWidth, h);
 }
 
 function setup() {
     if (navigator.userAgent.match(/(Android)/i)) {
-        h = 800;
+        h = 875;
     } else if (navigator.userAgent.match(/(iPhone)/i)) {
-        h = 800;
+        h = 875;
     } else if (navigator.userAgent.match(/(iPad|iPodPro)/i)) {
-        h = 1365;
+        h = 1500;
     } else {
-        h = 785;
+        h = 965;
     }
-    canvas = createCanvas(document.documentElement.scrollWidth, h);
+    canvas = createCanvas(windowWidth, h);
     background(backgroundColor);
-    canvas.style('z-index', '-1');//canvasを後ろに移動する。
+    canvas.style('z-index', '-1');
     canvas.position(0, 0);
 
     for (var i = 0; i < totalBubbles; i++) {
@@ -87,14 +86,14 @@ function drawBubble(bubble) {
     }
 
     bubble.offset += bubble.speed;
-    fill('#f2cc5d');//泡の色指定
-    stroke('while');//フチの色
+    fill('#f2cc5d');
+    stroke('while');
     ellipse(bubble.x, bubble.y - bubble.offset, bubble.diameter, bubble.diameter);
 
-    fill('white');//艶の色
+    fill('white');
     ellipse(bubble.x + (bubble.diameter * 0.2), bubble.y - bubble.offset - (bubble.diameter * 0.25), bubble.diameter / 8, bubble.diameter / 8);
 
-    fill('khaki');//艶の色
+    fill('khaki');
     noStroke();
     ellipse(bubble.x + (bubble.diameter * 0.15), bubble.y - bubble.offset - (bubble.diameter * 0.2), bubble.diameter / 8, bubble.diameter / 8);
 }
