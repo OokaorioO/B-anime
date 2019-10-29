@@ -15,7 +15,7 @@ function setup() {
     } else if (navigator.userAgent.match(/(iPad|iPodPro)/i)) {
         h = 1500;
     } else {
-        h = 600;
+        h = 865;
     }
     canvas = createCanvas(windowWidth, h);
     background(backgroundColor);
